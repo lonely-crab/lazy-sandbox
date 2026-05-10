@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+env/
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# SQLite / local DB
+*.db
+*.sqlite
+*.sqlite3
+# WAL и вспомогательные файлы SQLite
+*.db-wal
+*.db-shm
+*-journal
+# Редко: при ошибочном URL БД может появиться файл с именем :memory:
+:memory:
+**/:memory:
+
+# Environment
+.env
+
+# Node (frontend)
+node_modules/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing / coverage
+.coverage
+htmlcov/
+.pytest_cache/
+.ruff_cache/
