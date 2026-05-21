@@ -6,7 +6,7 @@ type RenderButtonProps = {
 export function RenderButton({ disabled, onClick }: RenderButtonProps) {
   return (
     <button className="button" type="button" onClick={onClick} disabled={disabled}>
-      Render
+      Рендер
     </button>
   );
 }

@@ -25,12 +25,12 @@ function App() {
     setError(null);
 
     if (template.trim().length === 0) {
-      setError('Template cannot be empty.');
+      setError('Шаблон не может быть пустым.');
       return;
     }
 
     if (dataInput.trim().length === 0) {
-      setError('JSON data cannot be empty.');
+      setError('JSON-данные не могут быть пустыми.');
       return;
     }
 
@@ -39,8 +39,9 @@ function App() {
     try {
       parsedData = JSON.parse(dataInput);
     } catch (parseError) {
-      const message = parseError instanceof Error ? parseError.message : 'Invalid JSON data.';
-      setError(`JSON parse error: ${message}`);
+      const message =
+        parseError instanceof Error ? parseError.message : 'Некорректные JSON-данные.';
+      setError(`Ошибка разбора JSON: ${message}`);
       return;
     }
 
@@ -49,8 +50,8 @@ function App() {
       setResult(output);
     } catch (renderError) {
       const message =
-        renderError instanceof Error ? renderError.message : 'Template render failed.';
-      setError(`Render error: ${message}`);
+        renderError instanceof Error ? renderError.message : 'Не удалось отрендерить шаблон.';
+      setError(`Ошибка рендера: ${message}`);
     }
   };
 
@@ -58,10 +59,10 @@ function App() {
     <div className="app">
       <header className="hero">
         <div>
-          <p className="eyebrow">Template Playground</p>
-          <h1 className="title">Template Sandbox</h1>
+          <p className="eyebrow">Песочница шаблонов</p>
+          <h1 className="title">Шаблонизаторы в действии</h1>
           <p className="subtitle">
-            Render Handlebars, Mustache, or EJS templates against JSON data in real time.
+            Введите шаблон, добавьте JSON-данные и получите реальный результат рендера.
           </p>
         </div>
         <TemplateSelector value={engine} onChange={setEngine} />
@@ -70,7 +71,7 @@ function App() {
       <main className="grid">
         <section className="card">
           <div className="card-header">
-            <h2 className="card-title">Inputs</h2>
+            <h2 className="card-title">Ввод</h2>
             <RenderButton disabled={isRenderDisabled} onClick={handleRender} />
           </div>
           <div className="inputs">

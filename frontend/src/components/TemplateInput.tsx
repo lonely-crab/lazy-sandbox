@@ -6,11 +6,11 @@ type TemplateInputProps = {
 export function TemplateInput({ value, onChange }: TemplateInputProps) {
   return (
     <label className="field">
-      <span className="label">Template</span>
+      <span className="label">Шаблон</span>
       <textarea
         className="textarea code"
         rows={10}
-        placeholder="Enter template markup"
+        placeholder="Например: Hello {{name}} или Hello <%= name %>"
         value={value}
         onChange={(event) => onChange(event.target.value)}
       />

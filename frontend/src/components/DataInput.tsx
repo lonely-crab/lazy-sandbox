@@ -6,11 +6,11 @@ type DataInputProps = {
 export function DataInput({ value, onChange }: DataInputProps) {
   return (
     <label className="field">
-      <span className="label">JSON data</span>
+      <span className="label">JSON-данные</span>
       <textarea
         className="textarea code"
         rows={10}
-        placeholder='Example: { "name": "John" }'
+        placeholder='Пример: { "name": "John" }'
         value={value}
         onChange={(event) => onChange(event.target.value)}
       />
