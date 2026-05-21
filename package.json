@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "@types/ejs": "^3.1.5",
+    "@types/mustache": "^4.2.6"
+  },
+  "dependencies": {
+    "ejs": "^5.0.2",
+    "handlebars": "^4.7.9",
+    "mustache": "^4.2.0"
+  }
+}

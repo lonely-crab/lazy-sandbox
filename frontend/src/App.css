@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap');
+
+:root {
+  color-scheme: light;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  background-color: #f6f3ef;
+  color: #1f252e;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 48px 20px 64px;
+  background: radial-gradient(circle at top, #fff7eb 0%, #f6f3ef 45%, #f0f0f4 100%);
+}
+
+.hero {
+  max-width: 1100px;
+  margin: 0 auto 32px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #5e6472;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  margin-top: 8px;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  max-width: 540px;
+  color: #4b5361;
+  font-size: 1rem;
+}
+
+.grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1.1fr 0.9fr;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #e3e6ed;
+  box-shadow: 0 14px 40px rgba(31, 37, 46, 0.08);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.card-title {
+  font-size: 1.2rem;
+}
+
+.inputs {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #3b4250;
+}
+
+.select,
+.textarea {
+  border-radius: 12px;
+  border: 1px solid #cbd2dc;
+  padding: 12px 14px;
+  background: #fafafa;
+  transition:
+    border 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.select:focus,
+.textarea:focus {
+  outline: none;
+  border-color: #2f6fed;
+  box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.15);
+  background: #ffffff;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 180px;
+}
+
+.code {
+  font-family:
+    'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+.button {
+  border-radius: 999px;
+  border: 1px solid #1f252e;
+  background: #1f252e;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 10px 22px;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 16px rgba(31, 37, 46, 0.2);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.output {
+  background: #101418;
+  color: #d1d7e2;
+  border-radius: 14px;
+  padding: 18px;
+  min-height: 160px;
+  border: 1px solid #1f252e;
+  font-family:
+    'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+}
+
+.output pre {
+  margin: 0;
+}
+
+.error {
+  border-radius: 12px;
+  border: 1px solid #f0b4b4;
+  background: #fff5f5;
+  color: #b42318;
+  padding: 12px 14px;
+  font-size: 0.9rem;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (max-width: 960px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .app {
+    padding: 32px 16px 48px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+}

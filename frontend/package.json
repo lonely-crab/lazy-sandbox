@@ -10,12 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "ejs": "^5.0.2",
+    "handlebars": "^4.7.9",
+    "mustache": "^4.2.0",
     "prettier": "^3.8.3",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@types/ejs": "^3.1.5",
+    "@types/mustache": "^4.2.6",
     "@types/node": "^24.12.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",

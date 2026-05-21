@@ -39,3 +39,7 @@
     background: none;
   }
 }
+
+body {
+  margin: 0;
+}
