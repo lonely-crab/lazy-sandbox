@@ -262,6 +262,54 @@
   gap: 12px;
 }
 
+.metrics {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  color: #4b5361;
+}
+
+.metric {
+  font-family:
+    'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+}
+
+.status {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+.status-idle {
+  background: #f3f5f8;
+  color: #4b5361;
+  border-color: #d6dbe5;
+}
+
+.status-saving {
+  background: #fff6e6;
+  color: #a06b00;
+  border-color: #f6d79a;
+}
+
+.status-saved {
+  background: #ecfdf3;
+  color: #087443;
+  border-color: #c3f0d7;
+}
+
+.status-error {
+  background: #fff5f5;
+  color: #b42318;
+  border-color: #f0b4b4;
+}
+
 @media (max-width: 1024px) {
   .hero {
     flex-direction: column;

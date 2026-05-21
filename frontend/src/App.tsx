@@ -6,6 +6,7 @@ import { RenderButton } from './components/RenderButton';
 import { ResultView } from './components/ResultView';
 import { TemplateInput } from './components/TemplateInput';
 import { TemplateSelector } from './components/TemplateSelector';
+import { saveBenchmark } from './services/benchmarkApi';
 import { renderTemplate } from './services/templateRenderer';
 import type { TemplateEngine } from './types/template';
 
@@ -18,11 +19,17 @@ function App() {
   const [dataInput, setDataInput] = useState(DEFAULT_DATA);
   const [result, setResult] = useState('');
   const [error, setError] = useState<string | null>(null);
+  const [renderTimeMs, setRenderTimeMs] = useState<number | null>(null);
+  const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
+  const [saveError, setSaveError] = useState<string | null>(null);
 
-  const isRenderDisabled = template.trim().length === 0 || dataInput.trim().length === 0;
+  const isRenderDisabled =
+    template.trim().length === 0 || dataInput.trim().length === 0 || saveStatus === 'saving';
 
-  const handleRender = () => {
+  const handleRender = async () => {
     setError(null);
+    setSaveError(null);
+    setSaveStatus('idle');
 
     if (template.trim().length === 0) {
       setError('Шаблон не может быть пустым.');
@@ -46,12 +53,34 @@ function App() {
     }
 
     try {
+      const startTime = performance.now();
       const output = renderTemplate(engine, template, parsedData);
+      const endTime = performance.now();
+      const duration = Number((endTime - startTime).toFixed(4));
+      setRenderTimeMs(duration);
       setResult(output);
+      setSaveStatus('saving');
+
+      try {
+        await saveBenchmark({
+          template_engine: engine,
+          render_time_ms: duration,
+          payload: JSON.stringify(parsedData),
+        });
+        setSaveStatus('saved');
+      } catch (saveBenchmarkError) {
+        const message =
+          saveBenchmarkError instanceof Error
+            ? saveBenchmarkError.message
+            : 'Failed to save benchmark.';
+        setSaveError(message);
+        setSaveStatus('error');
+      }
     } catch (renderError) {
       const message =
         renderError instanceof Error ? renderError.message : 'Не удалось отрендерить шаблон.';
       setError(`Ошибка рендера: ${message}`);
+      setRenderTimeMs(null);
     }
   };
 
@@ -80,7 +109,13 @@ function App() {
           </div>
         </section>
 
-        <ResultView result={result} error={error} />
+        <ResultView
+          result={result}
+          error={error}
+          renderTimeMs={renderTimeMs}
+          saveStatus={saveStatus}
+          saveError={saveError}
+        />
       </main>
     </div>
   );
