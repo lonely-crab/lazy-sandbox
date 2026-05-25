@@ -9,6 +9,7 @@ import { TemplateSelector } from './components/TemplateSelector';
 import { saveBenchmark } from './services/benchmarkApi';
 import { renderTemplate } from './services/templateRenderer';
 import type { TemplateEngine } from './types/template';
+import { BenchmarkHistory } from './components/BenchmarkHistory';
 
 const DEFAULT_TEMPLATE = 'Hello {{name}}';
 const DEFAULT_DATA = '{\n  "name": "John"\n}';
@@ -116,6 +117,8 @@ function App() {
           saveStatus={saveStatus}
           saveError={saveError}
         />
+
+        <BenchmarkHistory refreshKey={renderTimeMs} />
       </main>
     </div>
   );
