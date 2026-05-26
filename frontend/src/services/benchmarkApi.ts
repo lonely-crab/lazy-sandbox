@@ -34,3 +34,17 @@ export async function saveBenchmark(payload: BenchmarkCreate): Promise<Benchmark
 
   return response.json() as Promise<BenchmarkRead>;
 }
+
+
+export async function getBenchmarks(): Promise<BenchmarkRead[]> {
+  const baseUrl = getApiBaseUrl();
+
+  const response = await fetch(`${baseUrl}/benchmarks`);
+
+  if (!response.ok) {
+    const message = await response.text();
+    throw new Error(message || `Request failed with status ${response.status}`);
+  }
+
+  return response.json() as Promise<BenchmarkRead[]>;
+}
