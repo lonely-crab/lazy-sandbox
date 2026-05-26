@@ -6,6 +6,7 @@ import { RenderButton } from './components/RenderButton';
 import { ResultView } from './components/ResultView';
 import { TemplateInput } from './components/TemplateInput';
 import { TemplateSelector } from './components/TemplateSelector';
+import { BenchmarkHistory } from './components/BenchmarkHistory';
 import { saveBenchmark } from './services/benchmarkApi';
 import { renderTemplate } from './services/templateRenderer';
 import type { TemplateEngine } from './types/template';
@@ -22,6 +23,7 @@ function App() {
   const [renderTimeMs, setRenderTimeMs] = useState<number | null>(null);
   const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [saveError, setSaveError] = useState<string | null>(null);
+  const [historyRefreshKey, setHistoryRefreshKey] = useState(0);
 
   const isRenderDisabled =
     template.trim().length === 0 || dataInput.trim().length === 0 || saveStatus === 'saving';
@@ -57,6 +59,7 @@ function App() {
       const output = renderTemplate(engine, template, parsedData);
       const endTime = performance.now();
       const duration = Number((endTime - startTime).toFixed(4));
+
       setRenderTimeMs(duration);
       setResult(output);
       setSaveStatus('saving');
@@ -67,7 +70,9 @@ function App() {
           render_time_ms: duration,
           payload: JSON.stringify(parsedData),
         });
+
         setSaveStatus('saved');
+        setHistoryRefreshKey((key) => key + 1);
       } catch (saveBenchmarkError) {
         const message =
           saveBenchmarkError instanceof Error
@@ -116,6 +121,8 @@ function App() {
           saveStatus={saveStatus}
           saveError={saveError}
         />
+
+        <BenchmarkHistory refreshKey={historyRefreshKey} />
       </main>
     </div>
   );
