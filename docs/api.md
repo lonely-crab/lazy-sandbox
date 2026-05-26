@@ -6,7 +6,7 @@
 
 | Поле | Тип | Обязательное | Описание |
 |------|-----|--------------|----------|
-| `template_engine` | string | да | Имя шаблонизатора (например `jinja2`) |
+| `template_engine` | string | да | Имя шаблонизатора (`handlebars`, `mustache`, `ejs`) |
 | `render_time_ms` | number | да | Время рендеринга в миллисекундах, ≥ 0 |
 | `payload` | string \| null | нет | Дополнительные данные (JSON-строка или текст) |
 
@@ -22,9 +22,9 @@
 
 ```json
 {
-  "template_engine": "jinja2",
-  "render_time_ms": 12.4,
-  "payload": "{\"items\": [1, 2, 3]}"
+  "template_engine": "handlebars",
+  "render_time_ms": 0.0821,
+  "payload": "{\"name\": \"World\"}"
 }
 ```
 
@@ -37,7 +37,7 @@
 ```bash
 curl -s -X POST http://localhost:8000/benchmarks \
   -H 'Content-Type: application/json' \
-  -d '{"template_engine":"jinja2","render_time_ms":12.4}'
+  -d '{"template_engine":"handlebars","render_time_ms":0.0821,"payload":"{\"name\":\"World\"}"}'
 ```
 
 ---
@@ -59,7 +59,7 @@ curl -s -X POST http://localhost:8000/benchmarks \
 ### Пример curl
 
 ```bash
-curl -s 'http://localhost:8000/benchmarks?engine=jinja2&limit=10'
+curl -s 'http://localhost:8000/benchmarks?engine=handlebars&limit=10'
 ```
 
 ---

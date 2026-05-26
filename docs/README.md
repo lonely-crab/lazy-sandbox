@@ -1,7 +1,16 @@
 # Документация проекта
 
+**lazy-sandbox** — песочница для сравнения шаблонизаторов (Handlebars, Mustache, EJS).
+Фронтенд (React) рендерит шаблоны прямо в браузере, измеряет время выполнения и сохраняет результаты через REST API. Бэкенд (FastAPI + SQLite) принимает метрики и отдаёт историю измерений.
+
+## Навигация
+
 | Документ | Описание |
 |----------|----------|
+| [overview.md](overview.md) | Общее описание проекта, цели, стек технологий |
 | [architecture.md](architecture.md) | Компоненты системы и поток данных |
+| [frontend.md](frontend.md) | Компоненты React, рендеринг шаблонов, переменные окружения |
 | [api.md](api.md) | Контракт REST API (примеры запросов) |
-| [branching.md](branching.md) | Ветвление Git и правила PR |
+| [data-model.md](data-model.md) | Модель данных, схема БД, Pydantic-схемы |
+| [setup.md](setup.md) | Установка и запуск проекта (backend + frontend) |
+| [branching.md](branching.md) | Стратегия ветвления Git и правила PR |
